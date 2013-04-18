@@ -9,4 +9,7 @@ else
 	git pull "$INSTALL_DIR"
 fi
 
-ln -s "$INSTALL_DIR/meteoric.sh" /usr/local/bin/meteoric
+if [ ! -f /usr/local/bin/meteoric ];
+then
+	ln -s "$INSTALL_DIR/meteoric.sh" /usr/local/bin/meteoric
+fi
