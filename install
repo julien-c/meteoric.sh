@@ -1,6 +1,5 @@
 #!/bin/sh
 
-pwd=`pwd`
 INSTALL_DIR="$HOME/.meteoric.sh"
 
 if [ ! -d "$INSTALL_DIR" ];
