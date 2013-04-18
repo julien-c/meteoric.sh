@@ -3,6 +3,11 @@
 
 source meteoric.config.sh
 
+if [ -z "$GIT_URL" ]; then
+	echo "You need to create a conf file named meteoric.config.sh"
+	exit 1
+fi
+
 ###################
 # You usually don't need to change anything here –
 # You should modify your meteoric.config.sh file instead.
