@@ -34,7 +34,8 @@ fi
 
 
 SETUP="
-sudo add-apt-repository ppa:chris-lea/node.js-legacy; 
+sudo apt-get install software-properties-common;
+sudo add-apt-repository ppa:chris-lea/node.js-legacy;
 sudo apt-get -qq update;
 sudo apt-get install git mongodb;
 sudo apt-get install nodejs npm;
