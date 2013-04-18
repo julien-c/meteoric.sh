@@ -13,27 +13,27 @@ fi
 # You should modify your meteoric.config.sh file instead.
 # 
 
-export APP_DIR=/home/meteor
-export ROOT_URL=http://$APP_HOST
-export MONGO_URL=mongodb://localhost:27017/$APP_NAME
+APP_DIR=/home/meteor
+ROOT_URL=http://$APP_HOST
+MONGO_URL=mongodb://localhost:27017/$APP_NAME
 
 if $METEORITE; then
-	export METEOR_CMD=mrt
-	export METEOR_OPTIONS=''
+	METEOR_CMD=mrt
+	METEOR_OPTIONS=''
 else
-	export METEOR_CMD=meteor
-	export METEOR_OPTIONS='--release 0.6.2'
+	METEOR_CMD=meteor
+	METEOR_OPTIONS='--release 0.6.2'
 fi
 
 if [ -z "$EC2_PEM_FILE" ]; then
-	export SSH_HOST="root@$APP_HOST" SSH_OPT=""
+	SSH_HOST="root@$APP_HOST" SSH_OPT=""
 else
-	export SSH_HOST="ubuntu@$APP_HOST" SSH_OPT="-i $EC2_PEM_FILE"
+	SSH_HOST="ubuntu@$APP_HOST" SSH_OPT="-i $EC2_PEM_FILE"
 fi
 
 
 
-export SETUP="
+SETUP="
 sudo add-apt-repository ppa:chris-lea/node.js-legacy; 
 sudo apt-get -qq update;
 sudo apt-get install git mongodb;
@@ -48,7 +48,7 @@ pwd;
 sudo git clone $GIT_URL $APP_NAME;
 "
 
-export DEPLOY="
+DEPLOY="
 cd $APP_DIR;
 cd $APP_NAME;
 sudo git pull;
