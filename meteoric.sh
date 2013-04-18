@@ -1,7 +1,7 @@
 #!/bin/bash
 
-
-source meteoric.config.sh
+PWD=`pwd`
+source "$PWD/meteoric.config.sh"
 
 if [ -z "$GIT_URL" ]; then
 	echo "You need to create a conf file named meteoric.config.sh"
