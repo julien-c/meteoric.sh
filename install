@@ -1,0 +1,13 @@
+#!/bin/sh
+
+pwd=`pwd`
+INSTALL_DIR="$HOME/.meteoric.sh"
+
+if [ ! -d "$INSTALL_DIR" ];
+then
+	git clone http://github.com/julien-c/meteoric.sh.git "$INSTALL_DIR"
+else
+	git pull "$INSTALL_DIR"
+fi
+
+ln -s "$INSTALL_DIR/meteoric.sh" /usr/local/bin/meteoric

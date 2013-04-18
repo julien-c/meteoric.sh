@@ -80,7 +80,7 @@ deploy)
 	;;
 *)
 	cat <<ENDCAT
-./meteoric.sh [action]
+meteoric [action]
 
 Available actions:
 
