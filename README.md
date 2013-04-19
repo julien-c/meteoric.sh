@@ -2,9 +2,9 @@
 
 Deploy Meteor on EC2 (or your own server)
 
-## How to install
+## How to install and update
 
-The easiest way to install `meteoric` is using curl:
+The easiest way to install (or update) `meteoric` is using curl:
 
 ```bash
 curl https://raw.github.com/julien-c/meteoric.sh/master/install | sh
