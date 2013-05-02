@@ -41,6 +41,11 @@ $ meteoric setup
 $ meteoric deploy
 ```
 
+## Tested on
+
+- Ubuntu 13.04
+- Ubuntu 12.10
+
 ## Inspiration
 
 Hat tip to @netmute for his [meteor.sh script](https://github.com/netmute/meteor.sh). In our case though, we think having to rebuild native packages like `fibers` kind of defeats the whole point of bundling the Meteor app. Additionally, our approach enables hot code fixes (you don't have to stop/start your node server, and your users' apps shouldn't be disrupted).
