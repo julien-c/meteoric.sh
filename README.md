@@ -41,6 +41,15 @@ $ meteoric setup
 $ meteoric deploy
 ```
 
+If you'd like to use a different location for meteoric.config.sh, supply it as a second parameter:
+
+```bash
+$ meteoric setup /path/to/your.config.sh
+
+$ meteoric deploy /path/to/your.config.sh
+```
+
+
 ## Tested on
 
 - Ubuntu 13.04
