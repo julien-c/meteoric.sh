@@ -1,10 +1,10 @@
 #!/bin/bash
 
 if [[ -n "$2" ]]; then
-    source $2
+	source $2
 else
-    PWD=`pwd`
-    source "$PWD/meteoric.config.sh"
+	PWD=`pwd`
+	source "$PWD/meteoric.config.sh"
 fi
 
 if [ -z "$GIT_URL" ]; then
@@ -21,7 +21,7 @@ APP_DIR=/home/meteor
 ROOT_URL=http://$APP_HOST
 
 if [ -z "$MONGO_URL" ]; then
-    MONGO_URL=mongodb://localhost:27017/$APP_NAME
+	MONGO_URL=mongodb://localhost:27017/$APP_NAME
 fi
 
 if $METEORITE; then
@@ -30,9 +30,9 @@ if $METEORITE; then
 else
 	METEOR_CMD=meteor
 	if [ -z "METEOR_RELEASE" ]; then
-        echo "When using meteor and not Meteorite, you have to specify $METEOR_RELEASE in the config file"
-        exit 1
-    fi
+		echo "When using meteor and not Meteorite, you have to specify $METEOR_RELEASE in the config file"
+		exit 1
+	fi
 	METEOR_OPTIONS="--release $METEOR_RELEASE"
 fi
 
