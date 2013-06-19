@@ -67,19 +67,24 @@ fi
 DEPLOY="
 cd $APP_DIR;
 cd $APP_NAME;
+echo Updating codebase;
 sudo git pull;
 cd $APP_PATH;
+echo - - Killing forever and node;
+sudo kill `ps -ef|grep -i forever | grep -v grep| awk '{print $2}'` > /dev/null 2>&1;
+sudo kill `ps -ef|grep -i node | grep -v grep| awk '{print $2}'` > /dev/null 2>&1;
+echo Cleaning and creating new bundle (may take a few minutes) ;
+sudo rm -rf ../bundle > /dev/null 2>&1;
+sudo rm -rf ../bundle.tgz  > /dev/null 2>&1;
 sudo $METEOR_CMD bundle ../bundle.tgz $METEOR_OPTIONS;
 cd ..;
 sudo tar -zxvf bundle.tgz;
 export MONGO_URL=$MONGO_URL;
 export ROOT_URL=$ROOT_URL;
 export PORT=80;
+echo Starting forever;
 sudo -E forever start bundle/main.js;
 "
-
-
-echo $DEPLOY
 
 case "$1" in
 setup)
