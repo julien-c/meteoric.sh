@@ -78,12 +78,11 @@ sudo git checkout $GIT_BRANCH;
 sudo git pull;
 cd $APP_PATH;
 if [ "$FORCE_CLEAN" == "true" ]; then
-	echo Killing forever and node;
-    sudo kill `ps -ef|grep -i forever | grep -v grep| awk '{print $2}'` > /dev/null 2>&1;
-    sudo kill `ps -ef|grep -i node | grep -v grep| awk '{print $2}'` > /dev/null 2>&1;
+    echo Killing forever and node;
+    sudo killall nodejs;
     echo Cleaning bundle files;
     sudo rm -rf ../bundle > /dev/null 2>&1;
-    sudo rm -rf ../bundle.tgz  > /dev/null 2>&1;
+    sudo rm -rf ../bundle.tgz > /dev/null 2>&1;
 fi;
 echo Creating new bundle. This may take a few minutes;
 sudo $METEOR_CMD bundle ../bundle.tgz $METEOR_OPTIONS;
