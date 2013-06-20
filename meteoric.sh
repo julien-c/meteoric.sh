@@ -64,18 +64,28 @@ if [ -z "$APP_PATH" ]; then
 	APP_PATH="."
 fi
 
+
+if [ -z "$GIT_BRANCH" ]; then
+	GIT_BRANCH="master"
+fi
+
 DEPLOY="
 cd $APP_DIR;
 cd $APP_NAME;
 echo Updating codebase;
+sudo git fetch origin;
+sudo git checkout $GIT_BRANCH;
 sudo git pull;
 cd $APP_PATH;
-echo Killing forever and node;
-sudo kill `ps -ef|grep -i forever | grep -v grep| awk '{print $2}'` > /dev/null 2>&1;
-sudo kill `ps -ef|grep -i node | grep -v grep| awk '{print $2}'` > /dev/null 2>&1;
-echo Cleaning and creating new bundle. This may take a few minutes;
-sudo rm -rf ../bundle > /dev/null 2>&1;
-sudo rm -rf ../bundle.tgz  > /dev/null 2>&1;
+if [ "$FORCE_CLEAN" == "true" ]; then
+	echo Killing forever and node;
+    sudo kill `ps -ef|grep -i forever | grep -v grep| awk '{print $2}'` > /dev/null 2>&1;
+    sudo kill `ps -ef|grep -i node | grep -v grep| awk '{print $2}'` > /dev/null 2>&1;
+    echo Cleaning bundle files;
+    sudo rm -rf ../bundle > /dev/null 2>&1;
+    sudo rm -rf ../bundle.tgz  > /dev/null 2>&1;
+fi;
+echo Creating new bundle. This may take a few minutes;
 sudo $METEOR_CMD bundle ../bundle.tgz $METEOR_OPTIONS;
 cd ..;
 sudo tar -zxvf bundle.tgz;
