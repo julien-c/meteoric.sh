@@ -41,7 +41,7 @@ APP_PATH=.
 # If you would like to use a different branch, set it here
 GIT_BRANCH=master
 
-# Kill the forever and node processes, and deletes the bundle directory prior to deploying
+# Kill the forever and node processes, and deletes the bundle directory and tar file prior to deploying
 FORCE_CLEAN=false
 ```
 
