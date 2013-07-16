@@ -20,6 +20,9 @@ Create a conf file named `meteoric.config.sh` in your project's folder, setting 
 # IP or URL of the server you want to deploy to
 APP_HOST=meteor.julien-c.fr
 
+# If you want a different ROOT_URL, when using a load balancer for instance, set it here
+#ROOT_URL=mycustom.url.com
+
 # Comment this if your host is not an EC2 instance
 EC2_PEM_FILE=~/.ssh/proxynet.pem
 
@@ -31,6 +34,9 @@ METEORITE=true
 
 # If not using Meteorite, you need to specify this
 METEOR_RELEASE=0.6.4
+
+#If you have an external service, such as Google SMTP, set this
+#MAIL_URL=smtp://USERNAME:PASSWORD@smtp.googlemail.com:465
 
 # What's your app name?
 APP_NAME=microscope
