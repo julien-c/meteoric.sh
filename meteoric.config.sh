@@ -13,6 +13,9 @@ METEORITE=true
 # If not using Meteorite, you need to specify this
 METEOR_RELEASE=0.6.4
 
+#If you have an external service, such as Google SMTP, set this
+#MAIL_URL=smtp://USERNAME:PASSWORD@smtp.googlemail.com:465
+
 # What's your app name?
 APP_NAME=microscope
 

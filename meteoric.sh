@@ -90,6 +90,9 @@ cd ..;
 sudo tar -zxvf bundle.tgz;
 export MONGO_URL=$MONGO_URL;
 export ROOT_URL=$ROOT_URL;
+if [ -n "$MAIL_URL" ]; then
+    export MAIL_URL=$MAIL_URL;
+fi
 export PORT=80;
 echo Starting forever;
 sudo -E forever start bundle/main.js;
