@@ -18,7 +18,11 @@ fi
 #
 
 APP_DIR=/home/meteor
-ROOT_URL=http://$APP_HOST
+
+if [ -z "ROOT_URL" ]; then
+    ROOT_URL=http://$APP_HOST
+fi
+
 
 if [ -z "$MONGO_URL" ]; then
 	MONGO_URL=mongodb://localhost:27017/$APP_NAME
@@ -90,6 +94,9 @@ cd ..;
 sudo tar -zxvf bundle.tgz;
 export MONGO_URL=$MONGO_URL;
 export ROOT_URL=$ROOT_URL;
+if [ -n "$MAIL_URL" ]; then
+    export MAIL_URL=$MAIL_URL;
+fi;
 export PORT=80;
 echo Starting forever;
 sudo -E forever start bundle/main.js;
