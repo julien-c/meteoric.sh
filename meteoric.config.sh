@@ -30,3 +30,7 @@ GIT_BRANCH=master
 
 # Kill the forever and node processes, and deletes the bundle directory and tar file prior to deploying
 FORCE_CLEAN=false
+
+# If you want to do something before forever starts Meteor, you can do it here
+# NOTE: Don't forget to use a semi-colon at the end of every command
+#PRE_METEOR_START="export ENVIRONMENT=prod;"
