@@ -98,6 +98,13 @@ if [ -n "$MAIL_URL" ]; then
     export MAIL_URL=$MAIL_URL;
 fi;
 export PORT=80;
+"
+
+if [ -n "$PRE_METEOR_START" ]; then
+    DEPLOY="$DEPLOY $PRE_METEOR_START"
+fi;
+
+DEPLOY="$DEPLOY
 echo Starting forever;
 sudo -E forever start bundle/main.js;
 "
