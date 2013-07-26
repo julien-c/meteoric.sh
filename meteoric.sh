@@ -110,7 +110,7 @@ fi;
 
 DEPLOY="$DEPLOY
 echo Starting forever;
-sudo -E forever start bundle/main.js;
+sudo -E forever restart bundle/main.js || forever start bundle/main.js;
 "
 
 case "$1" in
