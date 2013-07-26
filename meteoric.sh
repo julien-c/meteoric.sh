@@ -77,7 +77,7 @@ if [ -z "$GIT_BRANCH" ]; then
 fi
 
 DEPLOY="
-cd $APP_DIR;
+cd $APP_DIR || mkdir $APP_DIR && cd $APP_DIR && git clone $GIT_URL $APP_NAME;
 cd $APP_NAME;
 echo Updating codebase;
 sudo git fetch origin;
