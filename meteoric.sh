@@ -51,7 +51,6 @@ else
 fi
 
 
-
 SETUP="
 sudo apt-get install software-properties-common;
 sudo add-apt-repository ppa:chris-lea/node.js-legacy;
