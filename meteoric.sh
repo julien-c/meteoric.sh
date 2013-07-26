@@ -51,7 +51,6 @@ else
 fi
 
 
-
 SETUP="
 sudo apt-get install software-properties-common;
 sudo add-apt-repository ppa:chris-lea/node.js-legacy;
@@ -78,7 +77,7 @@ if [ -z "$GIT_BRANCH" ]; then
 fi
 
 DEPLOY="
-cd $APP_DIR;
+cd $APP_DIR || mkdir $APP_DIR && cd $APP_DIR && git clone $GIT_URL $APP_NAME;
 cd $APP_NAME;
 echo Updating codebase;
 sudo git fetch origin;
@@ -108,11 +107,17 @@ if [ -n "$PRE_METEOR_START" ]; then
     DEPLOY="$DEPLOY $PRE_METEOR_START"
 fi;
 
+STARTUP="forever restart bundle/main.js || forever start bundle/main.js"
+if [ -n "$USER" ]; then
+    STARTUP="su -m $USER -c 'HOME=$HOME; $STARTUP'"
+fi;
+
 DEPLOY="$DEPLOY
 echo Starting forever;
-sudo -E forever restart bundle/main.js || forever start bundle/main.js;
+$STARTUP;
 "
 
+#sudo -E forever stop bundle/main.js;
 case "$1" in
 setup)
 	ssh $SSH_OPT $SSH_HOST $SETUP

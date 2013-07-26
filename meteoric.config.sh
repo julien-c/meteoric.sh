@@ -34,6 +34,12 @@ FORCE_CLEAN=false
 # Setup a listening port for your instance / default is 80
 #PORT=8000
 
+# Run forever as node user
+#USER=node
+
+# set home for the user node (needs r/w)
+#HOME=/home/node
+
 # If you want to do something before forever starts Meteor, you can do it here
 # NOTE: Don't forget to use a semi-colon at the end of every command
 #PRE_METEOR_START="export ENVIRONMENT=prod;"
