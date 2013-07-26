@@ -19,13 +19,17 @@ fi
 
 APP_DIR=/home/meteor
 
-if [ -z "ROOT_URL" ]; then
+if [ -z "$ROOT_URL" ]; then
     ROOT_URL=http://$APP_HOST
 fi
 
 
 if [ -z "$MONGO_URL" ]; then
 	MONGO_URL=mongodb://localhost:27017/$APP_NAME
+fi
+
+if [ -z "$PORT" ]; then
+    PORT=80
 fi
 
 if $METEORITE; then
@@ -97,7 +101,7 @@ export ROOT_URL=$ROOT_URL;
 if [ -n "$MAIL_URL" ]; then
     export MAIL_URL=$MAIL_URL;
 fi;
-export PORT=80;
+export PORT=$PORT;
 "
 
 if [ -n "$PRE_METEOR_START" ]; then
