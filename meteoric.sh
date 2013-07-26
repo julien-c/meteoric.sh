@@ -76,9 +76,13 @@ if [ -z "$GIT_BRANCH" ]; then
 	GIT_BRANCH="master"
 fi
 
+if [ -z "$CLEAN_UP" ]; then
+    CLEAN_UP="echo 'No Clean up'";
+fi
 DEPLOY="
 cd $APP_DIR || mkdir $APP_DIR && cd $APP_DIR && git clone $GIT_URL $APP_NAME;
 cd $APP_NAME;
+$CLEAN_UP;
 echo Updating codebase;
 sudo git fetch origin;
 sudo git checkout $GIT_BRANCH;
