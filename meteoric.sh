@@ -55,22 +55,36 @@ else
 fi
 
 
-
-SETUP="
-sudo apt-get install software-properties-common;
-sudo add-apt-repository ppa:chris-lea/node.js-legacy;
-sudo apt-get -qq update;
-sudo apt-get install git mongodb;
-sudo apt-get install nodejs npm;
-node --version;
-sudo npm install -g forever;
-curl https://install.meteor.com | /bin/sh;
-sudo npm install -g meteorite;
-sudo mkdir -p $APP_DIR;
-cd $APP_DIR;
-pwd;
-sudo git clone $GIT_URL $APP_NAME;
-"
+if [ -z "$REDHAT" ]; then
+	SETUP="
+	sudo yum install git mongodb;
+	sudo yum install nodejs npm;
+	node --version;
+	sudo npm install -g forever;
+	curl https://install.meteor.com | /bin/sh;
+	sudo npm install -g meteorite;
+	sudo mkdir -p $APP_DIR;
+	cd $APP_DIR;
+	pwd;
+	sudo git clone $GIT_URL $APP_NAME;
+	"
+else
+	SETUP="
+	sudo apt-get install software-properties-common;
+	sudo add-apt-repository ppa:chris-lea/node.js-legacy;
+	sudo apt-get -qq update;
+	sudo apt-get install git mongodb;
+	sudo apt-get install nodejs npm;
+	node --version;
+	sudo npm install -g forever;
+	curl https://install.meteor.com | /bin/sh;
+	sudo npm install -g meteorite;
+	sudo mkdir -p $APP_DIR;
+	cd $APP_DIR;
+	pwd;
+	sudo git clone $GIT_URL $APP_NAME;
+	"
+fi
 
 if [ -z "$APP_PATH" ]; then
 	APP_PATH="."
