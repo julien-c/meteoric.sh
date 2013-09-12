@@ -53,6 +53,9 @@ FORCE_CLEAN=false
 # set the ssh user if not 'root'
 #SSH_USER=myusername
 
+# set true if using RedHat and YUM installer
+REDHAT=true
+
 # If you want to do something before forever starts Meteor, you can do it here
 # NOTE: Don't forget to use a semi-colon at the end of every command
 #PRE_METEOR_START="export ENVIRONMENT=prod;"
