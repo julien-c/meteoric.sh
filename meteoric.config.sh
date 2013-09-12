@@ -31,6 +31,9 @@ GIT_BRANCH=master
 # Kill the forever and node processes, and deletes the bundle directory and tar file prior to deploying
 FORCE_CLEAN=false
 
+# set ssh username
+SSH_USER=bpellow
+
 # Setup a listening port for your instance / default is 80
 #PORT=8000
 
