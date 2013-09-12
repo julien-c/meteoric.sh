@@ -5,7 +5,7 @@ APP_HOST=meteor.julien-c.fr
 #ROOT_URL=mycustom.url.com
 
 # Comment this if your host is not an EC2 instance
-EC2_PEM_FILE=~/.ssh/proxynet.pem
+#EC2_PEM_FILE=~/.ssh/proxynet.pem
 
 # What's your project's Git repo?
 GIT_URL=git://github.com/SachaG/Microscope.git
@@ -14,7 +14,7 @@ GIT_URL=git://github.com/SachaG/Microscope.git
 METEORITE=true
 
 # If not using Meteorite, you need to specify this
-METEOR_RELEASE=0.6.4
+METEOR_RELEASE=0.6.5.1
 
 #If you have an external service, such as Google SMTP, set this
 #MAIL_URL=smtp://USERNAME:PASSWORD@smtp.googlemail.com:465
@@ -32,13 +32,13 @@ GIT_BRANCH=master
 FORCE_CLEAN=false
 
 # set ssh username
-SSH_USER=bpellow
+#SSH_USER=username
 
 # uncomment this if you're on RedHat and need to use YUM installer instead of apt-get
 REDHAT=true
 
 # Setup a listening port for your instance / default is 80
-PORT=8000
+#PORT=8000
 
 # If you want to do something before forever starts Meteor, you can do it here
 # NOTE: Don't forget to use a semi-colon at the end of every command
