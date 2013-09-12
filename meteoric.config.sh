@@ -34,6 +34,9 @@ FORCE_CLEAN=false
 # set ssh username
 SSH_USER=bpellow
 
+# uncomment this if you're on RedHat and need to use YUM installer instead of apt-get
+REDHAT=true
+
 # Setup a listening port for your instance / default is 80
 #PORT=8000
 
