@@ -38,7 +38,7 @@ SSH_USER=bpellow
 REDHAT=true
 
 # Setup a listening port for your instance / default is 80
-#PORT=8000
+PORT=8000
 
 # If you want to do something before forever starts Meteor, you can do it here
 # NOTE: Don't forget to use a semi-colon at the end of every command
