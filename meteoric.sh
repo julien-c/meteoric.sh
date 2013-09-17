@@ -17,7 +17,11 @@ fi
 # You should modify your meteoric.config.sh file instead.
 #
 
-APP_DIR=/home/meteor
+if [ -z "$SSH_USER" ]; then
+    SSH_USER=ubuntu
+fi
+
+APP_DIR="/home/$SSH_USER"
 
 if [ -z "$ROOT_URL" ]; then
     ROOT_URL=http://$APP_HOST
@@ -65,7 +69,7 @@ sudo npm install -g meteorite;
 sudo mkdir -p $APP_DIR;
 cd $APP_DIR;
 pwd;
-sudo git clone $GIT_URL $APP_NAME;
+git clone $GIT_URL $APP_NAME;
 "
 
 if [ -z "$APP_PATH" ]; then
@@ -81,9 +85,9 @@ DEPLOY="
 cd $APP_DIR;
 cd $APP_NAME;
 echo Updating codebase;
-sudo git fetch origin;
-sudo git checkout $GIT_BRANCH;
-sudo git pull;
+git fetch origin;
+git checkout $GIT_BRANCH;
+git pull;
 cd $APP_PATH;
 if [ "$FORCE_CLEAN" == "true" ]; then
     echo Killing forever and node;
@@ -110,7 +114,9 @@ fi;
 
 DEPLOY="$DEPLOY
 echo Starting forever;
-sudo -E forever restart bundle/main.js || forever start bundle/main.js;
+pushd "$APP_DIR/$APP_NAME";
+sudo -E forever restart "bundle/main.js" || forever start bundle/main.js;
+popd;
 "
 
 case "$1" in
