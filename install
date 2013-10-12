@@ -6,7 +6,9 @@ if [ ! -d "$INSTALL_DIR" ];
 then
 	git clone http://github.com/julien-c/meteoric.sh.git "$INSTALL_DIR"
 else
+        cd "$INSTALL_DIR"
 	git pull "$INSTALL_DIR"
+	cd -
 fi
 
 if [ ! -f /usr/local/bin/meteoric ];
