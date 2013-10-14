@@ -4,7 +4,7 @@ INSTALL_DIR="$HOME/.meteoric.sh"
 
 if [ ! -d "$INSTALL_DIR" ];
 then
-	git clone http://github.com/julien-c/meteoric.sh.git "$INSTALL_DIR"
+	git clone https://github.com/workingBen/meteoric.sh.git "$INSTALL_DIR"
 else
 	git pull "$INSTALL_DIR"
 fi
