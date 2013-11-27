@@ -20,7 +20,7 @@ fi
 APP_DIR=/home/meteor
 
 if [ -z "$ROOT_URL" ]; then
-    ROOT_URL=http://$APP_HOST
+	ROOT_URL=http://$APP_HOST
 fi
 
 
@@ -28,8 +28,12 @@ if [ -z "$MONGO_URL" ]; then
 	MONGO_URL=mongodb://localhost:27017/$APP_NAME
 fi
 
+if [ -z "$BIND_IP" ]; then
+	BIND_IP='0.0.0.0'
+fi
+
 if [ -z "$PORT" ]; then
-    PORT=80
+	PORT=80
 fi
 
 if $METEORITE; then
@@ -101,6 +105,7 @@ export ROOT_URL=$ROOT_URL;
 if [ -n "$MAIL_URL" ]; then
     export MAIL_URL=$MAIL_URL;
 fi;
+export BIND_IP=$BIND_IP;
 export PORT=$PORT;
 "
 
