@@ -7,10 +7,12 @@ Deploy Meteor on EC2 (or your own server)
 The easiest way to install (or update) `meteoric` is using curl:
 
 ```bash
+$ sudo apt-get install git-core
+$ git init
 $ curl https://raw.github.com/julien-c/meteoric.sh/master/install | sh
 ```
 
-You may need to `sudo` in order for the script to symlink `meteoric` to your `/usr/local/bin`.
+You may need to `sudo ln -s "$INSTALL_DIR/meteoric.sh" /usr/local/bin/meteoric` in order for the <a href="https://github.com/julien-c/meteoric.sh/blob/master/install">install script</a> to symlink `meteoric` to your `/usr/local/bin`.
 
 ## How to use
 
