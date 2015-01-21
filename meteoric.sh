@@ -96,7 +96,7 @@ if [ "$FORCE_CLEAN" == "true" ]; then
     sudo rm -rf ../bundle > /dev/null 2>&1;
 fi;
 echo Creating new bundle. This may take a few minutes;
-sudo $METEOR_CMD build ../bundle > log;
+sudo $METEOR_CMD build ../bundle $METEOR_OPTIONS;
 cd ..;
 cd bundle;
 sudo tar -zxvf $APP_NAME.tar.gz;
