@@ -61,7 +61,7 @@ sudo apt-get install software-properties-common;
 sudo add-apt-repository ppa:chris-lea/node.js;
 sudo apt-get -qq update;
 sudo apt-get install git mongodb;
-sudo apt-get install nodejs npm;
+sudo apt-get install nodejs;
 node --version;
 sudo npm install -g forever;
 curl https://install.meteor.com | /bin/sh;
@@ -94,14 +94,17 @@ if [ "$FORCE_CLEAN" == "true" ]; then
     sudo killall nodejs;
     echo Cleaning bundle files;
     sudo rm -rf ../bundle > /dev/null 2>&1;
-    sudo rm -rf ../bundle.tgz > /dev/null 2>&1;
 fi;
 echo Creating new bundle. This may take a few minutes;
-sudo $METEOR_CMD bundle ../bundle.tgz $METEOR_OPTIONS;
+sudo $METEOR_CMD build ../bundle $METEOR_OPTIONS;
 cd ..;
-sudo tar -zxvf bundle.tgz;
+cd bundle;
+sudo tar -zxvf $APP_NAME.tar.gz;
 export MONGO_URL=$MONGO_URL;
 export ROOT_URL=$ROOT_URL;
+cd bundle/programs/server;
+npm install;
+cd ../..;
 if [ -n "$MAIL_URL" ]; then
     export MAIL_URL=$MAIL_URL;
 fi;
@@ -114,8 +117,8 @@ if [ -n "$PRE_METEOR_START" ]; then
 fi;
 
 DEPLOY="$DEPLOY
-echo Starting forever;
-sudo -E forever restart bundle/main.js || sudo -E forever start bundle/main.js;
+echo Starting forever
+sudo -E forever restart main.js || sudo -E forever start main.js;
 "
 
 case "$1" in
@@ -136,4 +139,3 @@ deploy  - Deploy the app to the server
 ENDCAT
 	;;
 esac
-
