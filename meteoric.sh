@@ -117,6 +117,7 @@ if [ -n "$PRE_METEOR_START" ]; then
 fi;
 
 DEPLOY="$DEPLOY
+echo Starting forever
 sudo -E forever restart main.js || sudo -E forever start main.js;
 "
 
